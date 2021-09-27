@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stadtlandkind</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Runde 3</h1>
+    <p>Was trägt dein Vater?</p>
+    <div class="flex align-center">
+      <input type="text" placeholder="Antwort" id="answer" required />
+      <button class="button" onclick="submit()">✅</button>
+    </div>
+    <p id="output"></p>
+    <div id="next" class="invisible">
+      <button onclick="proceed()">Weiter</button>
+    </div>
+    <script>
+      const correct = "schelle";
+
+      function submit() {
+        input = document.querySelector("#answer");
+        evaluate(input.value);
+      }
+
+      function putOutput(output) {
+        container = document.querySelector("#output");
+        container.textContent = output;
+      }
+
+      function evaluate(answer) {
+        answer = answer.toLowerCase();
+        if (answer === correct) {
+          putOutput("Richtig! 🥳");
+          showNext();
+        } else {
+          putOutput("Falsche Antwort. Schau nochmal genau hin. 🔔");
+        }
+      }
+
+      function showNext() {
+        document.querySelector("#next").classList.add("visible");
+      }
+
+      function proceed() {
+        window.location = "/stadtlandkind2.html";
+      }
+    </script>
+  </body>
+</html>

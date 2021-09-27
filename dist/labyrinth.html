@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labyrinth</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Runde 2</h1>
+    <p>
+      Gratuliere! Du hast es mit dem Fahrrad bis ans Ziel geschafft.
+      <span class="icon">🚲</span>
+    </p>
+    <p>Beantworte die Frage, die sich dir auf dem Weg gestellt hat.</p>
+    <div class="flex align-center">
+      <input type="text" placeholder="Antwort" id="answer" required />
+      <button class="button" onclick="submit()">✅</button>
+    </div>
+    <p id="output"></p>
+    <script>
+      const correct = 2.5;
+
+      function submit() {
+        input = document.querySelector("#answer");
+        evaluate(input.value);
+      }
+
+      function putOutput(output) {
+        container = document.querySelector("#output");
+        container.textContent = output;
+      }
+
+      function evaluate(answer) {
+        answer = parseFloat(answer, 10);
+        if (answer === correct) {
+          putOutput("Richtig! Du darfst die Schachtel öffnen. 🥳");
+        } else if (answer < correct) {
+          putOutput(
+            "Falsche Antwort. Aber du kannst froh sein, dass die Grenze nicht so tief ist. 😁"
+          );
+        } else if (answer > correct) {
+          putOutput("Falsche Antwort. Huiuiui das wäre etwas hoch. 🥴");
+        }
+      }
+    </script>
+  </body>
+</html>

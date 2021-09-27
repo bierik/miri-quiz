@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicode</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Runde 4</h1>
+    <p>Wer suchet, der findet… 🔍</p>
+    <div class="flex align-center">
+      <input type="text" placeholder="Antwort" id="answer" required />
+      <button class="button" onclick="submit()">✅</button>
+    </div>
+    <p id="output"></p>
+    <div id="next" class="invisible">
+      Richtig! Bei diesem Code handelt es sich um folgendes Emoji: 🧚
+      <button onclick="proceed()">Weiter</button>
+    </div>
+    <script>
+      const correct = "&#x1f9da";
+
+      function submit() {
+        input = document.querySelector("#answer");
+        evaluate(input.value);
+      }
+
+      function putOutput(output) {
+        container = document.querySelector("#output");
+        container.textContent = output;
+      }
+
+      function evaluate(answer) {
+        answer = answer.toLowerCase();
+        if (answer === correct) {
+          putOutput("");
+          showNext();
+        } else {
+          putOutput(
+            "Falsche Antwort. Schau dir die Schachtel nochmals genau an. 🔣"
+          );
+        }
+      }
+
+      function showNext() {
+        document.querySelector("#next").classList.add("visible");
+      }
+
+      function proceed() {
+        window.location = "unicode2.html";
+      }
+    </script>
+  </body>
+</html>

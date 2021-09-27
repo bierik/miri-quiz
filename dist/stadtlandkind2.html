@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stadtlandkind</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Runde 3</h1>
+    <p>Welche RGB-Farbe fehlt Urs?</p>
+    <div class="flex align-center">
+      <input type="text" placeholder="Antwort" id="answer" required />
+      <button class="button" onclick="submit()">✅</button>
+    </div>
+    <p id="output"></p>
+    <script>
+      const correct = "grün";
+
+      function submit() {
+        input = document.querySelector("#answer");
+        evaluate(input.value);
+      }
+
+      function putOutput(output) {
+        container = document.querySelector("#output");
+        container.textContent = output;
+      }
+
+      function evaluate(answer) {
+        answer = answer.toLowerCase();
+        if (answer === correct) {
+          putOutput("Richtig! Du darfst die Schachtel öffnen. 🥳");
+        } else {
+          putOutput(
+            "Falsche Antwort. Frau Herzog wäre nicht stolz auf dich. 😉"
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

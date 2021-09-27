@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicode</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Runde 4</h1>
+    <p>Kombiniere das Wort aus Runde 3 + 🧚</p>
+    <div class="flex align-center">
+      <input type="text" placeholder="Antwort" id="answer" required />
+      <button class="button" onclick="submit()">✅</button>
+    </div>
+    <p id="output"></p>
+    <video
+      autoplay
+      muted
+      loop
+      id="popper"
+      class="popper invisible"
+      src="party-popper.mp4"
+    />
+    <script>
+      const correct = "grünefee";
+
+      function submit() {
+        input = document.querySelector("#answer");
+        evaluate(input.value);
+      }
+
+      function putOutput(output) {
+        container = document.querySelector("#output");
+        container.textContent = output;
+      }
+
+      function showPopper() {
+        document.querySelector("#popper").classList.add("visible");
+      }
+
+      function evaluate(answer) {
+        answer = answer.toLowerCase().replace(" ", "");
+        if (answer === correct) {
+          putOutput(
+            "Glückwunsch! Du hast das Rätsel gelöst und darfst die finale Schachtel öffnen. 🎁"
+          );
+          showPopper();
+        } else {
+          putOutput("Falsche Antwort. Denk nochmals nach. 💡");
+        }
+      }
+    </script>
+  </body>
+</html>
